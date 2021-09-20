@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script type = "text/javascript" src = "index.js" ></script> -->
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Planner</title>
+</head>
+<body>
+    <h1>Planner</h1>
+    <div class="container">
+        <input type="text" id = "task" class="task" name="task" placeholder="Enter your task" onkeypress=" enterKeyPressed(event)">
+        <!-- <button onclick="exe()">submit</button> -->
+    </div>
+    <div class="incomplete">
+        <h2>Tasks to-do :</h2>
+        
+        </div>
+    <div class="completed">
+        <h2>Tasks done &nbsp;:</h2>
+        
+    </div>
+    <script>
+        //adding to to-do list
+       var wage = document.getElementById("task");
+ wage.addEventListener("keydown", function (e) {
+     if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
+         exe();
+     }
+ });
+//         function exe(){
+//          let vals= document.getElementById("task").value;
+
+//   document.querySelector('.incomplete').innerHTML+='<div id = "tasks" class="tasks" >'+ vals +'<i><div id="trash" class="fas fa-trash" onClick="deleted(this)"></div> </i>  <i> <div id="check" class="fas fa-check" onClick="move(this)"></div> </i> </div> '
+//   document.getElementById("task").value = " "
+//  }
+//deleting the to do list
+function exe(){
+         let vals= document.getElementById("task").value;
+
+  document.querySelector('.incomplete').innerHTML+='<div id = "tasks" class="tasks" >'+ vals +'<i><div id="trash" class="fas fa-trash" onClick="deleted(this)"></div> </i>  <i> <div id="check" class="fas fa-check" onClick="move(this)"></div> </i> </div> '
+   document.getElementById("task").value = " "
+}
+function deleted(e){
+  e.parentNode.parentNode.remove()
+}
+ //adding to completed list
+ function move(e){
+    var data = e.parentNode.parentNode.innerHTML
+    document.querySelector('.completed').innerHTML+='<div class = "tasks-done" class="tasks" >' +data +'</div>'
+    e.parentNode.parentNode.remove()
+    
+ 
+}
+    </script>
+</body>
+</html>
